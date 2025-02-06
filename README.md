@@ -7,6 +7,6 @@
 
 ## How to use:
 1. Download Autohotkey at https://www.autohotkey.com/
-2. Download the file at releases
+2. Download the Macro at releases
 3. Press buttons or use hotkeys to start macros
 4. Enjoy the automated awesomeness!
