@@ -1,4 +1,4 @@
-﻿isMacroRunning := false
+isMacroRunning := false
 imagePath := A_ScriptDir . "\CoolImage.png"
 
 Gui, +Resize +MinSize +MaxSize +OwnDialogs
@@ -7,17 +7,17 @@ Gui, Add, Picture, x20 y60 w200 h100, %imagePath%
 Gui, Add, Button, x20 y180 w200 h30 gRunMacro1, Type 'test' and Enter every 5 seconds (Ctrl+1)
 Gui, Add, Button, x20 y220 w200 h30 gRunHelloWorld, Type 'Hello World' (Ctrl+2)
 Gui, Add, Button, x20 y260 w200 h30 gRunSpamKeys, Spam 'a' key (Ctrl+3)
-Gui, Add, Button, x20 y300 w200 h30 gRunMacroCustom1, Type 'Good Morning' (Ctrl+4)
-Gui, Add, Button, x20 y340 w200 h30 gRunMacroCustom2, Type 'How are you?' (Ctrl+5)
+Gui, Add, Button, x20 y300 w200 h30 gRunSpamPizza, Spam 'Pizza' (Ctrl+4)
+Gui, Add, Button, x20 y340 w200 h30 gRunSpamCheese, Spam 'Cheese' (Ctrl+5)
 Gui, Add, Button, x20 y380 w200 h30 gRunSpamKeys2, Spam 'Enter' key (Ctrl+6)
-Gui, Add, Button, x20 y420 w200 h30 gStopMacro, STOP THAT CRAZY MACRO! (Esc)
+Gui, Add, Button, x20 y420 w200 h30 gStopMacro, STOP THAT MACRO! (Esc)
 Gui, Show, w250 h480, Macro Application
 Return
 
 RunMacro1:
     if (isMacroRunning)
     {
-        MsgBox, WHOA, hold on! A macro is already running! Stop that one first!
+        MsgBox, A macro is already running! Stop it first.
         Return
     }
     isMacroRunning := true
@@ -33,7 +33,7 @@ Return
 RunHelloWorld:
     if (isMacroRunning)
     {
-        MsgBox, Uhhh, hold your horses! A macro is already running! Stop it first!
+        MsgBox, A macro is already running! Stop it first.
         Return
     }
     isMacroRunning := true
@@ -44,29 +44,29 @@ RunHelloWorld:
     Gui, Show
 Return
 
-RunMacroCustom1:
+RunSpamPizza:
     if (isMacroRunning)
     {
-        MsgBox, Whoopsie-doodle! A macro is already running! Please stop it!
+        MsgBox, A macro is already running! Stop it first.
         Return
     }
     isMacroRunning := true
     Gui, Hide
-    Send, Good Morning
+    Send, Pizza
     Send, {Enter}
     isMacroRunning := false
     Gui, Show
 Return
 
-RunMacroCustom2:
+RunSpamCheese:
     if (isMacroRunning)
     {
-        MsgBox, Holy smokes! A macro is already in action! Stop it first, buddy!
+        MsgBox, A macro is already running! Stop it first.
         Return
     }
     isMacroRunning := true
     Gui, Hide
-    Send, How are you?
+    Send, Cheese
     Send, {Enter}
     isMacroRunning := false
     Gui, Show
@@ -75,7 +75,7 @@ Return
 RunSpamKeys:
     if (isMacroRunning)
     {
-        MsgBox, STOP! A macro is running already! Hit STOP first!
+        MsgBox, A macro is already running! Stop it first.
         Return
     }
     isMacroRunning := true
@@ -90,7 +90,7 @@ Return
 RunSpamKeys2:
     if (isMacroRunning)
     {
-        MsgBox, WHOA, slow down! A macro is already running! Stop that first!
+        MsgBox, A macro is already running! Stop it first.
         Return
     }
     isMacroRunning := true
@@ -105,22 +105,22 @@ Return
 StopMacro:
     if (!isMacroRunning)
     {
-        MsgBox, Oopsie! There's no macro to stop, silly goose!
+        MsgBox, No macro is running.
         Return
     }
     isMacroRunning := false
     SetTimer, TypeTest, Off
     SetTimer, SpamAKey, Off
     SetTimer, SpamEnterKey, Off
-    MsgBox, WOOHOO! The macro has been stopped! Great job!
+    MsgBox, The macro has been stopped!
     Gui, Show
 Return
 
 ^1::GoSub, RunMacro1
 ^2::GoSub, RunHelloWorld
 ^3::GoSub, RunSpamKeys
-^4::GoSub, RunMacroCustom1
-^5::GoSub, RunMacroCustom2
+^4::GoSub, RunSpamPizza
+^5::GoSub, RunSpamCheese
 ^6::GoSub, RunSpamKeys2
 Esc::GoSub, StopMacro
 
