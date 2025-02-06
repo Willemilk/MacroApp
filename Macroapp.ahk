@@ -1,5 +1,5 @@
 ﻿isMacroRunning := false
-imagePath := "C:\Users\wjpmd\OneDrive\Documents\AutoHotkey\WillemZijnCooleMacro\CoolImage.png"
+imagePath := A_ScriptDir . "\CoolImage.png"
 
 Gui, +Resize +MinSize +MaxSize +OwnDialogs
 Gui, Add, Text, x20 y20 w200 h30, Pizza Time
