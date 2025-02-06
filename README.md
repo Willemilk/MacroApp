@@ -6,6 +6,7 @@
 - Customizable actions
 
 ## How to use:
-1. Download the .ahk script
-2. Press buttons or use hotkeys to start macros
-3. Enjoy the automated awesomeness!
+1. Download Autohotkey at https://www.autohotkey.com/
+2. Download the file at releases
+3. Press buttons or use hotkeys to start macros
+4. Enjoy the automated awesomeness!
