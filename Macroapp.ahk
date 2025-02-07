@@ -5,12 +5,11 @@ Gui, +Resize +MinSize +MaxSize +OwnDialogs
 Gui, Add, Text, x20 y20 w200 h30, Pizza Time
 Gui, Add, Picture, x20 y60 w200 h100, %imagePath%
 Gui, Add, Button, x20 y180 w200 h30 gRunMacro1, Type 'test' and Enter every 5 seconds (Ctrl+1)
-Gui, Add, Button, x20 y220 w200 h30 gRunHelloWorld, Type 'Hello World' (Ctrl+2)
-Gui, Add, Button, x20 y260 w200 h30 gRunSpamKeys, Spam 'a' key (Ctrl+3)
-Gui, Add, Button, x20 y300 w200 h30 gRunSpamKeys2, Spam 'Enter' key (Ctrl+4)
-Gui, Add, Button, x20 y340 w200 h30 gRunSpamWASD, Spam 'W A S D Space' (Ctrl+5)
-Gui, Add, Button, x20 y380 w200 h30 gStopMacro, STOP THAT MACRO! (Esc)
-Gui, Show, w250 h440, Macro Application
+Gui, Add, Button, x20 y220 w200 h30 gRunSpamKeys, Spam 'a' key (Ctrl+2)
+Gui, Add, Button, x20 y260 w200 h30 gRunSpamKeys2, Spam 'Enter' key (Ctrl+3)
+Gui, Add, Button, x20 y300 w200 h30 gRunSpamWASD, Spam 'W A S D Space' (Ctrl+4)
+Gui, Add, Button, x20 y340 w200 h30 gStopMacro, STOP THAT MACRO! (Esc)
+Gui, Show, w250 h400, Macro Application
 Return
 
 RunMacro1:
@@ -27,20 +26,6 @@ RunMacro1:
 TypeTest:
     Send, test
     Send, {Enter}
-Return
-
-RunHelloWorld:
-    if (isMacroRunning)
-    {
-        MsgBox, A macro is already running! Stop it first.
-        Return
-    }
-    isMacroRunning := true
-    Gui, Hide
-    Send, hello world
-    Send, {Enter}
-    isMacroRunning := false
-    Gui, Show
 Return
 
 RunSpamKeys:
@@ -118,10 +103,9 @@ StopMacro:
 Return
 
 ^1::GoSub, RunMacro1
-^2::GoSub, RunHelloWorld
-^3::GoSub, RunSpamKeys
-^4::GoSub, RunSpamKeys2
-^5::GoSub, RunSpamWASD
+^2::GoSub, RunSpamKeys
+^3::GoSub, RunSpamKeys2
+^4::GoSub, RunSpamWASD
 Esc::GoSub, StopMacro
 
 GuiClose:
