@@ -1,9 +1,8 @@
-# Cool Macro V1.0
+# Cool Macro V1.1
 
 ## Features:
-- Super fun macro automation
+- macro automation
 - Press buttons or use hotkeys to activate macros
-- Customizable actions
 
 ## How to use:
 1. Download AutoHotkey v1.1 from https://www.autohotkey.com/ (v2.0 is not compatible with this script).
