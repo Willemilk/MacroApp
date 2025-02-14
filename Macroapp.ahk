@@ -9,8 +9,9 @@ Gui, Add, Button, x20 y220 w200 h30 gRunSpamKeys, Spam 'a' key (Ctrl+2)
 Gui, Add, Button, x20 y260 w200 h30 gRunSpamKeys2, Spam 'Enter' key (Ctrl+3)
 Gui, Add, Button, x20 y300 w200 h30 gRunSpamWASD, Spam 'W A S D Space' (Ctrl+4)
 Gui, Add, Button, x20 y340 w200 h30 gRunSpamSpace, Spam 'Space' key (Ctrl+5)
-Gui, Add, Button, x20 y380 w200 h30 gStopMacro, STOP THAT MACRO! (Esc)
-Gui, Show, w250 h440, Macro Application
+Gui, Add, Button, x20 y380 w200 h30 gRunSpamW, Spam 'W' key (Ctrl+6)
+Gui, Add, Button, x20 y420 w200 h30 gStopMacro, STOP THAT MACRO! (Esc)
+Gui, Show, w250 h480, Macro Application
 Return
 
 RunMacro1:
@@ -103,6 +104,21 @@ SpamSpaceKey:
     Send, {Space}
 Return
 
+RunSpamW:
+    if (isMacroRunning)
+    {
+        MsgBox, A macro is already running! Stop it first.
+        Return
+    }
+    isMacroRunning := true
+    Gui, Hide
+    SetTimer, SpamWKey, 100
+    Return
+
+SpamWKey:
+    Send, w
+Return
+
 StopMacro:
     if (!isMacroRunning)
     {
@@ -115,6 +131,7 @@ StopMacro:
     SetTimer, SpamEnterKey, Off
     SetTimer, SpamWASDKeys, Off
     SetTimer, SpamSpaceKey, Off
+    SetTimer, SpamWKey, Off
     MsgBox, The macro has been stopped!
     Gui, Show
 Return
@@ -124,6 +141,7 @@ Return
 ^3::GoSub, RunSpamKeys2
 ^4::GoSub, RunSpamWASD
 ^5::GoSub, RunSpamSpace
+^6::GoSub, RunSpamW
 Esc::GoSub, StopMacro
 
 GuiClose:
